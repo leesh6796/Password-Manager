@@ -1,0 +1,9 @@
+.idea/
+db.sqlite3
+mysite/*.pyc
+*.log
+*.pot
+*.pyc
+__pycache__/
+media
+mysite
