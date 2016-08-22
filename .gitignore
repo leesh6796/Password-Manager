@@ -4,6 +4,7 @@ mysite/*.pyc
 *.log
 *.pot
 *.pyc
+pm/*.pyc
 __pycache__/
 media
 mysite
