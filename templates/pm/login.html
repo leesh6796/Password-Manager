@@ -1,0 +1,24 @@
+{% extends "pm/base.html" %}
+
+{% block title %}Password Manager - 로그인{% endblock %}
+
+{% block intro %}패스워드 정보에 접근하기 위해서 마스터 아이디로 로그인 하세요.{% endblock %}
+
+{% block body %}
+    <form id="loginform" method="POST" action="{% url 'pm:login' %}">
+        {% csrf_token %}
+        <div style="padding-left:60px; padding-right:60px;">
+            <div class="form-group">
+              <label for="idbox" style="font-size:12pt;">Master ID</label>
+              <input type="text" class="form-control" id="idbox" name="idbox">
+            </div><br />
+
+            <div class="form-group">
+              <label for="pwbox" style="font-size:12pt;">Master Password</label>
+              <input type="password" class="form-control" id="pwbox" name="pwbox">
+            </div><br />
+
+            <button type="submit" class="btn btn-lg btn-primary">Login</button>
+        </div>
+    </form>
+{% endblock %}

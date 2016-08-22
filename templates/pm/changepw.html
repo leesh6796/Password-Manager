@@ -1,0 +1,35 @@
+{% extends "pm/base.html" %}
+
+{% block title %}Password Manager - 패스워드 변경{% endblock %}
+
+{% block intro %}변경 할 마스터 패스워드를 입력하세요.{% endblock %}
+
+{% block body %}
+    <form id="changeform" method="POST" action="{% url 'pm:changepw' %}">
+        {% csrf_token %}
+        <div style="padding-left:60px; padding-right:60px;">
+            <div class="form-group">
+              <label for="pwbox" style="font-size:12pt;">현재 마스터 패스워드</label>
+              <input type="password" class="form-control" id="pwbox" name="pwbox">
+            </div><br />
+
+            <div class="form-group">
+              <label for="npwbox" style="font-size:12pt;">새 마스터 패스워드</label>
+              <input type="password" class="form-control" id="npwbox" name="npwbox">
+            </div><br />
+
+            <div class="form-group">
+              <label for="npwcbox" style="font-size:12pt;">새 마스터 패스워드 확인</label>
+              <input type="password" class="form-control" id="npwcbox" name="npwcbox">
+            </div><br />
+
+            <button type="submit" class="btn btn-lg btn-primary">변경</button>
+        </div>
+    </form>
+
+    {% if error %}
+        <script type="text/javascript">
+            alert('패스워드 확인이 일치하지 않거나 현재 비밀번호가 일치하지 않습니다.');
+        </script>
+    {% endif %}
+{% endblock %}

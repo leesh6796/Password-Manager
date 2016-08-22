@@ -1,0 +1,56 @@
+{% extends "pm/base.html" %}
+
+{% block title %}Password Manager - 사이트 추가{% endblock %}
+
+{% block intro %}
+    {% if not edit %}
+        새로운 사이트 암호를 추가하세요. 사이트 암호 정보는 암호화되어 관리됩니다.
+    {% else %}
+        사이트 정보를 수정하세요
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {% if edit %}
+        <form class="margin_object" method="POST" action="{% url 'pm:edit' siteid %}">
+    {% else %}
+        <form class="margin_object" method="POST" action="{% url 'pm:write' %}">
+    {% endif %}
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="namebox" style="font-size:12pt;">사이트 이름</label>
+          <input type="text" class="form-control box" id="namebox" name="namebox">
+        </div><br />
+
+        <div class="form-group">
+          <label for="idbox" style="font-size:12pt;">아이디</label>
+          <input type="text" class="form-control box" id="idbox" name="idbox">
+        </div><br />
+
+        <div class="form-group">
+          <label for="pwbox" style="font-size:12pt;">비밀번호</label>
+          <input type="text" class="form-control box" id="pwbox" name="pwbox">
+        </div><br />
+
+        <div class="input-group" style="width:100%;">
+          <label for="comment" style="font-size:12pt;">설명</label>
+          <textarea class="form-control box" rows="5" id="comment" name="comment"></textarea>
+        </div><br />
+
+        {% if edit %}
+            <button type="submit" id="bt_ok" class="btn btn-lg btn-primary" style="width:130px;">수정</button>
+        {% else %}
+            <button type="submit" id="bt_ok" class="btn btn-lg btn-primary" style="width:130px;">사이트 추가</button>
+        {% endif %}
+        <button type="button" id="bt_home" class="btn btn-lg btn-primary" style="margin-left:30px; width:130px;">홈으로</button>
+    </form>
+
+    {% if edit %}
+        <script type="text/javascript">
+            $("#namebox").val("{{ info.sitename }}");
+            $("#idbox").val("{{ info.username }}");
+            $("#pwbox").val("{{ info.password }}");
+            $("#comment").val("{{ info.comment }}");
+        </script>
+    {% endif %}
+{% endblock %}

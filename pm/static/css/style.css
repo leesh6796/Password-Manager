@@ -1,0 +1,22 @@
+.jumbotron
+{
+	padding-left:60px;
+	padding-right:60px;
+}
+
+.margin_object
+{
+	margin-left:60px;
+	margin-right:60px;
+	font-size:12pt;
+}
+
+input[type="text"]
+{
+    font-size:12pt;
+}
+
+textarea
+{
+    font-size:12pt;
+}

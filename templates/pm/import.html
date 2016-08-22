@@ -1,0 +1,17 @@
+{% extends "pm/base.html" %}
+
+{% block title %}Password Manager - Import{% endblock %}
+
+{% block intro %}백업 파일에서 데이터를 복구합니다.{% endblock %}
+
+{% block body %}
+    <form class="margin_object" method="POST" action="{% url 'pm:import' %}">
+        {% csrf_token %}
+        <div class="input-group" style="width:100%;">
+          <label for="data" style="font-size:12pt;">백업 데이터</label>
+          <textarea class="form-control box" rows="5" id="data" name="data"></textarea>
+        </div><br />
+
+        <button type="submit" id="bt_ok" class="btn btn-lg btn-primary" style="width:130px;">사이트 추가</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "pm/base.html" %}
+
+{% block title %}Password Manager{% endblock %}
+
+{% block intro %}여러분의 패스워드를 안전하게 관리해드립니다.{% endblock %}
+
+{% block body %}
+    <div class="list-group margin_object" id="mainlist">
+        <a href="{% url 'pm:write' %}" class="list-group-item">사이트 추가</a>
+        <a href="{% url 'pm:changepw' %}" class="list-group-item">마스터 패스워드 변경</a>
+        <a href="{% url 'pm:import' %}" class="list-group-item">데이터 복원</a>
+        <a href="{% url 'pm:logout' %}" class="list-group-item">로그아웃</a>
+
+        {% for s in sites %}
+            <a href="/pm/view/{{ s.id }}/" class="list-group-item">{{ s.sitename }}</a>
+        {% endfor %}
+    </div>
+{% endblock %}
